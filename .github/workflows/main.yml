@@ -1,0 +1,15 @@
+name: test_build
+on: [push , workflow_dispatch]
+jobs: 
+ test_ssh:
+  runs-on: ubuntu-latest
+  steps:
+   - name: executing remote ssh commands using password
+     uses: appleboy/ssh-action@v0.1.9
+     with:
+      host: ${{ secrets.HOST}}
+      username: ${{ secrets.USERNAME }}
+      password: ${{ secrets.SSH_PRIVATE_KEY }}
+      port: ${{ secrets.PORT }}
+      script: | 
+             echo "Nice Job!!!"  
