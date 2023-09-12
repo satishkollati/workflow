@@ -15,10 +15,18 @@ jobs:
         run: mvn -B package --file pom.xml
       - name : create directory
         run: mkdir staging && cp target/*.war staging
-        
+
       - name: upload artifacts
         uses: actions/upload-artifact@v3
         with:
            name: Package
            path: staging
-        
+    
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+         host: ${{ secrets.HOST }}
+         username: ${{ secrets.USERNAME }}
+         password: ${{ secrets.SSH_PRIVATE_KEY}}
+         port: ${{ secrets.PORT }}
+         script: whoami  
