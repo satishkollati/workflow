@@ -10,6 +10,6 @@ jobs:
       host: ${{ secrets.HOST}}
       username: ${{ secrets.USERNAME }}
       password: ${{ secrets.SSH_PRIVATE_KEY }}
-      port: ${{ secrets.PORT }}
+      port: 22
       script: | 
              echo "Nice Job!!!"  
