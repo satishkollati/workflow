@@ -23,10 +23,12 @@ jobs:
            path: staging
     
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1.0.0
+        uses: appleboy/ssh-action@v0.1.10
         with:
-         host: ${{ secrets.HOST }}
-         username: ${{ secrets.USERNAME }}
-         password: ${{ secrets.SSH_PRIVATE_KEY}}
-         port: ${{ secrets.PORT }}
-         script: whoami  
+           host: ${{ inputs.hostname }}
+           username: ${{ secrets.USERNAME }}
+           key: ${{ secrets.SSH_PRIVATE_KEY }}
+           port: ${{ secrets.PORT }}
+           command_timeout: 30m
+           script: | 
+             echo "Nice Job!!!"    
