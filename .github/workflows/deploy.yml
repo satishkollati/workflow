@@ -23,7 +23,7 @@ jobs:
            path: staging
     
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v0.1.10
+        uses: appleboy/ssh-action@v0.1.9
         with:
            host: ${{ secrets.HOST}}
            username: ${{ secrets.USERNAME }}
