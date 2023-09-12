@@ -4,12 +4,11 @@ jobs:
  test_ssh:
   runs-on: ubuntu-latest
   steps:
-   - name: executing remote ssh commands using password
-     uses: appleboy/ssh-action@v0.0.7
+   - name: executing remote ssh commands using ssh key
+     uses: appleboy/ssh-action@v1.0.0
      with:
-      host: ${{ secrets.HOST}}
+      host: ${{ secrets.HOST }}
       username: ${{ secrets.USERNAME }}
-      password: ${{ secrets.SSH_PRIVATE_KEY }}
-      port: 22
-      script: | 
-             echo "Nice Job!!!"  
+      key: ${{ secrets.KEY }}
+      port: ${{ secrets.PORT }}
+      script: whoami
